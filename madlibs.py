@@ -1,3 +1,4 @@
+import random
 # Stores the user's adjectives
 adjArray = []
 
@@ -13,7 +14,7 @@ while i <= 2:
 
 birdType = input('Enter a type of bird: ')
 roomLocation = input('Enter a room in a house: ')
-person = input('Enter someone\'s name: ')
+personName = input('Enter someone\'s name: ')
 
 # Stores the template for the story and uses f-strings (format strings)
 # 'f' in the beginning states that the string will be an f-string. It allows you to embedded Python expressions inside string contents.
@@ -21,8 +22,8 @@ person = input('Enter someone\'s name: ')
 
 def storyTemplate():
     print(
-        f'It was a {adjArray[0].lower()}, cold November day. I woke up to the {adjArray[1].lower()} smell of a {birdType.lower()} roasting in the {roomLocation.lower()}. ' +
-        f'{person.title()}\'s {birdType.lower()} tacos are totally {adjArray[2].lower()}.')
+        f'It was a {random.choice(adjArray).lower()}, cold November day. I woke up to the {random.choice(adjArray).lower()} smell of a {birdType.lower()} roasting in the {roomLocation.lower()}. ' +
+        f'{personName.title()}\'s {birdType.lower()} tacos are totally {random.choice(adjArray).lower()}.')
 
 
 # Calls the storyTemplate function
