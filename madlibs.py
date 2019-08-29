@@ -9,6 +9,7 @@ def inputChecker(userInput):
     if re.match(r'^[a-zA-Z]*$', userInput):
         return True
     else:
+        print('You cannot use special characters.')
         return False
 
 
@@ -20,12 +21,13 @@ phraseSelector = 0
 phrases = ['Enter an adjective: ', 'Enter another adjective: ',
            'Please enter another adjective: ']
 
-for userInput in phrases:
+# While phraseSelector is less than the size of the list it will run
+# The phraseSelector will only increase if the inputChecker returns true. If it returns false it will ask the question again
+while(phraseSelector < len(phrases)):
     adjInput = input(phrases[phraseSelector])
     if inputChecker(adjInput):
         adjArray.append(adjInput)
-    phraseSelector += 1
-
+        phraseSelector += 1
 
 birdType = input('Enter a type of bird: ')
 roomLocation = input('Enter a room in a house: ')
