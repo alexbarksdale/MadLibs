@@ -1,7 +1,23 @@
+import sys
 import random
 import re
+from colorama import Fore, Back, Style
 
-print('MadLib: \nIf you do not enter a value, a random MadLib will be generated for you.')
+title = """
+ _______          _           _   _   _                          _               
+|__   __|        (_)         | | | \ | |                        | |              
+   | |_   _ _ __  _  ___ __ _| | |  \| | _____   _____ _ __ ___ | |__   ___ _ __ 
+   | | | | | '_ \| |/ __/ _` | | | . ` |/ _ \ \ / / _ \ '_ ` _ \| '_ \ / _ \ '__|
+   | | |_| | |_) | | (_| (_| | | | |\  | (_) \ V /  __/ | | | | | |_) |  __/ |   
+   |_|\__, | .__/|_|\___\__,_|_| |_| \_|\___/ \_/ \___|_| |_| |_|_.__/ \___|_|   
+       __/ | |                                                                   
+      |___/|_|                                                                   
+"""
+
+print(Fore.CYAN + title + Fore.RESET)
+print('If you do not enter a value, a random MadLib will be generated for you.')
+
+
 # inputChecker uses REGEX to look through the user's input and checks to see if there are only words (A-Z)
 # If it contains any special characters such as $ or @, it'll return false. '*$' means it'll check all the way through the input
 
@@ -14,7 +30,7 @@ def inputChecker(userInput):
         return False
 
 
-# Dictionary contains predetermined words incase the user doesn't input anything
+# Dictionary contains predetermined words that will be selected at random incase the user doesn't input anything
 noInput = {
     'adjList': ['bitter', 'disfigured', 'disloyal'],
     'birdList': ['flamingo', 'mockingjay', 'robin'],
@@ -30,7 +46,6 @@ phraseSelector = 0
 phrases = ['Enter an adjective: ', 'Enter another adjective: ',
            'Please enter another adjective: ']
 
-# Asks the user THREE adjectives before looping out and asking the user the other questions
 # While phraseSelector is less than the size of the list it will run
 # The phraseSelector will only increase if the inputChecker returns true. If it returns false it will ask the question again
 while(phraseSelector < len(phrases)):
@@ -56,12 +71,14 @@ if not personName.strip():
 # Stores the template for the story and uses f-strings (format strings)
 # 'f' in the beginning states that the string will be an f-string. It allows you to embedded Python expressions inside string contents
 
+# TODO Make multiple stories and have it randomized and add ascii art to mactch the story name
+
 
 def storyTemplate():
     print(
+        'Your MadLib was generated: \n' +
         f'It was a {random.choice(adjArray).lower()}, cold November day. I woke up to the {random.choice(adjArray).lower()} smell of a {birdType.lower()} roasting in the {roomLocation.lower()}. ' +
         f'{personName.title()}\'s {birdType.lower()} tacos are totally {random.choice(adjArray).lower()}.')
 
 
-# Calls the storyTemplate function
 storyTemplate()
